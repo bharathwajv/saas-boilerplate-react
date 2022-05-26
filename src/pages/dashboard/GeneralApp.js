@@ -1,7 +1,9 @@
+/* eslint-disable no-debugger */
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Stack, Button } from '@mui/material';
 // hooks
+import { CashierClient } from '../../utils/NGClient.ts';
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
 // _mock_
@@ -33,6 +35,13 @@ export default function GeneralApp() {
 
   const { themeStretch } = useSettings();
 
+  // function to call ngswag client async 
+  const callNgswag =  async () => {
+    debugger;
+    const cc = new CashierClient();
+    const tst = await cc.getList();
+  };
+  
   return (
     <Page title="General: App">
       <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -50,7 +59,7 @@ export default function GeneralApp() {
                   }}
                 />
               }
-              action={<Button variant="contained">Go Now</Button>}
+              action={<Button variant="contained" onClick={callNgswag}>Go Now</Button>}
             />
           </Grid>
 
