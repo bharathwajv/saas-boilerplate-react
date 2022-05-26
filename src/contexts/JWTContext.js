@@ -77,7 +77,7 @@ function AuthProvider({ children }) {
           setSession(accessToken);
 
           const response = await axios.get('/personal/profile');
-          const { user } = response.data;
+          const user = response.data;
 
           dispatch({
             type: 'INITIALIZE',
@@ -121,7 +121,15 @@ function AuthProvider({ children }) {
         tenant: 'root' 
       }
     });
-    const { token, user } = response.data;
+    const { token } = response.data;
+
+    const response2 = await axios.get('/personal/profile', 
+       {
+      headers: {
+        'Authorization': `Bearer ${token}` 
+      }}
+      );
+    const user = response2.data;
 
     setSession(token);
 

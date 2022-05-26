@@ -18,8 +18,6 @@ export default function Logo({ disabledLink = false, sx }) {
 
   const PRIMARY_MAIN = theme.palette.primary.main;
 
-  const PRIMARY_DARK = theme.palette.primary.dark;
-
   // OR
   // const logo = '/logo/logo_single.svg';
 

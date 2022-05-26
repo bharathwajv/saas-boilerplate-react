@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 // hooks
 import useAuth from '../hooks/useAuth';
 // utils
@@ -9,12 +10,11 @@ import Avatar from './Avatar';
 
 export default function MyAvatar({ ...other }) {
   const { user } = useAuth();
-
   return (
     <Avatar
-      src={user?.photoURL}
+      src={user?.imageUrl}
       alt={user?.displayName}
-      color={user?.photoURL ? 'default' : createAvatar(user?.displayName).color}
+      color={user?.imageUrl ? 'default' : createAvatar(user?.displayName).color}
       {...other}
     >
       {createAvatar(user?.displayName).name}

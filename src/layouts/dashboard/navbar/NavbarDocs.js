@@ -1,5 +1,5 @@
 // @mui
-import { Stack, Button, Typography } from '@mui/material';
+import { Stack,  Typography } from '@mui/material';
 // hooks
 import useAuth from '../../../hooks/useAuth';
 import useLocales from '../../../hooks/useLocales';
