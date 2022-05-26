@@ -1,40 +1,38 @@
-## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+## 1.Install
 
-> Free React Admin Dashboard made with Material-UI components and React.
+### npm
 
-![preview](public/static/preview.jpg)
+```
+npm i
+or
+npm i --legacy-peer-deps
+```
 
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **7** Demo pages                                      | **42+** demo pages                                                |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
+### yarn
 
-## Page demo
+```
+yarn install
+```
 
-- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Register](https://minimal-kit-react.vercel.app/register)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
+## 2.Start
 
-## Getting started
+```sh
+npm start
+or
+yarn start
+```
 
-- Recommended `node js 14.x` and `npm 6+`
-- Install dependencies: `npm install` or `yarn install`
-- Start the project: `npm run start` or `yarn start`
+## 3.Build
 
-## License
+```sh
+npm run build or yarn build
+```
 
-Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Contact us
+The build is minified and the filenames include the hashes.<br>
 
-Email Us: support@minimals.cc
+Your app is ready to be deployed.
