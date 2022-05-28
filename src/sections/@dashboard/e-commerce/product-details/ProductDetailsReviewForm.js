@@ -77,7 +77,7 @@ export default function ProductDetailsReviewForm({ onClose, id, ...other }) {
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
           <div>
-            <Stack direction="row" flexWrap="wrap" alignItems="center" spacing={1.5}>
+            <Stack direction="row"  >
               <Typography variant="body2">Your review about this product:</Typography>
 
               <Controller
