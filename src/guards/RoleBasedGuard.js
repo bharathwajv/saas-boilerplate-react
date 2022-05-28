@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import PropTypes from 'prop-types';
 import { m } from 'framer-motion';
 // @mui
