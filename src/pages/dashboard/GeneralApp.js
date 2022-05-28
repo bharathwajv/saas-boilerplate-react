@@ -35,7 +35,7 @@ export default function GeneralApp() {
 
   const { themeStretch } = useSettings();
 
-  // function to call ngswag client async 
+  // function to call ngswag client async // todo - testing
   const callNgswag =  async () => {
     debugger;
     const cc = new CashierClient();

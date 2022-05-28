@@ -33,6 +33,7 @@ const navConfig = [
     subheader: 'general',
     items: [
       { title: 'app', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
+      { title: 'ecommerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
       { title: 'banking', path: PATH_DASHBOARD.general.banking, icon: ICONS.banking }
     ],
   },

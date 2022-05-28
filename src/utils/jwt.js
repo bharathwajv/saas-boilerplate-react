@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import jwtDecode from 'jwt-decode';
 // routes
 import { PATH_AUTH } from '../routes/paths';
@@ -32,13 +33,14 @@ const handleTokenExpired = (exp) => {
     // eslint-disable-next-line no-alert
     alert('Token expired');
 
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('token');
 
     window.location.href = PATH_AUTH.login;
   }, timeLeft);
 };
 
 const setSession = (accessToken) => {
+  debugger
   if (accessToken) {
     localStorage.setItem('token', accessToken);
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -47,7 +49,7 @@ const setSession = (accessToken) => {
     const { exp } = jwtDecode(accessToken); // ~5 days by minimals server
     handleTokenExpired(exp);
   } else {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('token');
     delete axios.defaults.headers.common.Authorization;
   }
 };

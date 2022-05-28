@@ -6,6 +6,10 @@ import { HOST_API } from '../config';
 
 const axiosInstance = axios.create({
   baseURL: HOST_API,
+  headers: {
+    // TODO take from subdomain
+    'tenant': 'root',
+  }
 });
 
 axiosInstance.interceptors.response.use(

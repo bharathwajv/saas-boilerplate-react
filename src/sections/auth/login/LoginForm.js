@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
@@ -49,6 +50,7 @@ export default function LoginForm() {
   } = methods;
 
   const onSubmit = async (data) => {
+    debugger;
     try {
       await login(data.email, data.password);
     } catch (error) {
@@ -57,7 +59,7 @@ export default function LoginForm() {
       reset();
 
       if (isMountedRef.current) {
-        setError('afterSubmit', { ...error, message: error.message });
+        setError('afterSubmit', { ...error, message: error.messages[0] });
       }
     }
   };

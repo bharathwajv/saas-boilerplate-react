@@ -4,7 +4,6 @@ import { createContext, useEffect, useReducer } from 'react';
 // utils
 import axios from '../utils/axios';
 import { isValidToken, setSession } from '../utils/jwt';
-
 // ----------------------------------------------------------------------
 
 const initialState = {
@@ -37,15 +36,11 @@ const handlers = {
     isAuthenticated: false,
     user: null,
   }),
-  REGISTER: (state, action) => {
-    const { user } = action.payload;
-
-    return {
-      ...state,
-      isAuthenticated: true,
-      user,
-    };
-  },
+  REGISTER: (state) => ({
+    ...state,
+    isAuthenticated: false,
+    user: null,
+  }),
 };
 
 const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
@@ -111,28 +106,15 @@ function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    debugger
     const response = await axios.post('/tokens', {
       email,
       password,
-    },
-    {// TODO take from subdomain
-      headers: {
-        tenant: 'root' 
-      }
     });
     const { token } = response.data;
 
-    const response2 = await axios.get('/personal/profile', 
-       {
-      headers: {
-        'Authorization': `Bearer ${token}` 
-      }}
-      );
-    const user = response2.data;
-
     setSession(token);
-
+    const userData = await axios.get('/personal/profile');
+    const user = userData.data;
     dispatch({
       type: 'LOGIN',
       payload: {
@@ -141,22 +123,19 @@ function AuthProvider({ children }) {
     });
   };
 
-  const register = async (email, password, firstName, lastName) => {
-    const response = await axios.post('/api/account/register', {
+  const register = async (email, password, userName) => {
+    const response = await axios.post('/users/self-register', {
       email,
       password,
-      firstName,
-      lastName,
+      confirmPassword: password,
+      userName
     });
-    const { accessToken, user } = response.data;
+    // const { accessToken, user } = response.data;
 
-    localStorage.setItem('token', accessToken);
+    // localStorage.setItem('token', accessToken);
 
     dispatch({
-      type: 'REGISTER',
-      payload: {
-        user,
-      },
+      type: 'REGISTER'
     });
   };
 

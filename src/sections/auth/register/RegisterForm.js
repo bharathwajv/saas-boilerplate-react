@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import * as Yup from 'yup';
 import { useState } from 'react';
 // form
@@ -23,15 +24,13 @@ export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const RegisterSchema = Yup.object().shape({
-    firstName: Yup.string().required('First name required'),
-    lastName: Yup.string().required('Last name required'),
+    userName: Yup.string().required('User name required'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
     password: Yup.string().required('Password is required'),
   });
 
   const defaultValues = {
-    firstName: '',
-    lastName: '',
+    userName: '',
     email: '',
     password: '',
   };
@@ -49,13 +48,14 @@ export default function RegisterForm() {
   } = methods;
 
   const onSubmit = async (data) => {
+    debugger
     try {
-      await register(data.email, data.password, data.firstName, data.lastName);
+      await register(data.email, data.password, data.userName);
     } catch (error) {
       console.error(error);
       reset();
       if (isMountedRef.current) {
-        setError('afterSubmit', { ...error, message: error.message });
+        setError('afterSubmit', { ...error, message: Object.values(error.errors)[0][0] });
       }
     }
   };
@@ -65,11 +65,7 @@ export default function RegisterForm() {
       <Stack spacing={3}>
         {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
 
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-          <RHFTextField name="firstName" label="First name" />
-          <RHFTextField name="lastName" label="Last name" />
-        </Stack>
-
+        <RHFTextField name="userName" label="User name" />
         <RHFTextField name="email" label="Email address" />
 
         <RHFTextField
