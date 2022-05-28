@@ -78,22 +78,22 @@ export default function HomeHero() {
           <ContentStyle>
             <m.div variants={varFade().inRight}>
               <Typography variant="h1" sx={{ color: 'common.white' }}>
-                Start a <br />
-                new connection <br /> with
+                There’s something <br />
+                for everyone <br /> with
                 <Typography component="span" variant="h1" sx={{ color: 'primary.main' }}>
-                  &nbsp;SAAS
+                  &nbsp;COMPANYNAME
                 </Typography>
               </Typography>
             </m.div>
 
             <m.div variants={varFade().inRight}>
-              <Typography sx={{ color: 'common.white' }}>Developed with faster and fluent MUI components, enter your company name to get things started (Demo always uses root)</Typography>
+              <Typography sx={{ color: 'common.white' }}>Developed with faster and fluent MUI components, Enter your company name to get things started (Demo always uses root)</Typography>
             </m.div>
 
             <m.div variants={varFade().inRight}>
               <Stack direction="row" flexWrap="wrap" alignItems="center" spacing={1.5}>
-                <Typography variant="h6" sx={{ color: 'text.disabled', mb: 3 }}>
-                  Company Name:
+                <Typography variant="h6" sx={{ color: 'text.disabled' }}>
+                  Company Name :
                 </Typography>
                 <TextField label="tenant" focused defaultValue="Root" sx={{ input: { color: 'white' } }} />
               </Stack>
