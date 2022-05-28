@@ -16,7 +16,7 @@ import RoleBasedGuard from '../../guards/RoleBasedGuard';
 export default function PermissionDenied() {
   const { themeStretch } = useSettings();
 
-  const [role, setRole] = useState('admin');
+  const [role, setRole] = useState('Admin');
 
   const handleChangeRole = (event, newRole) => {
     if (newRole !== null) {
@@ -39,7 +39,7 @@ export default function PermissionDenied() {
         />
 
         <ToggleButtonGroup exclusive value={role} onChange={handleChangeRole} color="primary" sx={{ mb: 5 }}>
-          <ToggleButton value="admin" aria-label="admin role">
+          <ToggleButton value="Admin" aria-label="admin role">
             isAdmin
           </ToggleButton>
 

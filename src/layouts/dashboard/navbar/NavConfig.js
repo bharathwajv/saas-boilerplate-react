@@ -130,37 +130,37 @@ const navConfig = [
         title: 'item_by_roles',
         path: PATH_DASHBOARD.permissionDenied,
         icon: ICONS.menuItem,
-        roles: ['admin'],
+        roles: ['Admin'],
         caption: 'only_admin_can_see_this_item',
       },
-      {
-        title: 'menu_level_1',
-        path: '#1',
-        icon: ICONS.menuItem,
-        children: [
-          { title: 'menu_level_2', path: '#2', disabled: true },
-          {
-            title: 'menu_level_2',
-            path: '#3',
-            children: [
-              { title: 'menu_level_3', path: '#4' },
-              { title: 'menu_level_3', path: '#5' },
-            ],
-          },
-        ],
-      },
-      { title: 'item_disabled', path: '#disabled', icon: ICONS.menuItem, disabled: true },
-      {
-        title: 'item_label',
-        path: '#label',
-        icon: ICONS.menuItem,
-        info: (
-          <Label color="info" startIcon={<Iconify icon="eva:email-fill" />}>
-            NEW
-          </Label>
-        ),
-      },
-      { title: 'item_caption', path: '#caption', icon: ICONS.menuItem, caption: 'description' },
+      // {
+      //   title: 'menu_level_1',
+      //   path: '#1',
+      //   icon: ICONS.menuItem,
+      //   children: [
+      //     { title: 'menu_level_2', path: '#2', disabled: true },
+      //     {
+      //       title: 'menu_level_2',
+      //       path: '#3',
+      //       children: [
+      //         { title: 'menu_level_3', path: '#4' },
+      //         { title: 'menu_level_3', path: '#5' },
+      //       ],
+      //     },
+      //   ],
+      // },
+      // { title: 'item_disabled', path: '#disabled', icon: ICONS.menuItem, disabled: true },
+      // {
+      //   title: 'item_label',
+      //   path: '#label',
+      //   icon: ICONS.menuItem,
+      //   info: (
+      //     <Label color="info" startIcon={<Iconify icon="eva:email-fill" />}>
+      //       NEW
+      //     </Label>
+      //   ),
+      // },
+      // { title: 'item_caption', path: '#caption', icon: ICONS.menuItem, caption: 'description' },
     ],
   },
 ];

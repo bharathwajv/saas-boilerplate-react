@@ -21,11 +21,10 @@ RoleBasedGuard.propTypes = {
 export default function RoleBasedGuard({ hasContent, roles, children }) {
   // Logic here to get current user role
   const { user } = useAuth();
-
   // const currentRole = 'user';
-  const currentRole = user?.role; // admin;
+  const currentRole = user?.roles; // admin;
 
-  if (typeof roles !== 'undefined' && !roles.includes(currentRole)) {
+  if (typeof roles !== 'undefined' && !roles.includes(currentRole[0])) {
     return hasContent ? (
       <Container component={MotionContainer} sx={{ textAlign: 'center' }}>
         <m.div variants={varBounce().in}>
