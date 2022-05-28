@@ -6,7 +6,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
-import { Link, Stack, Alert, IconButton, InputAdornment } from '@mui/material';
+import { Link, Stack, Alert, IconButton, InputAdornment,Button } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // routes
 import { PATH_AUTH } from '../../../routes/paths';
@@ -32,8 +32,8 @@ export default function LoginForm() {
   });
 
   const defaultValues = {
-    email: 'admin@root.com',
-    password: '123Pa$$word!',
+    email: '',
+    password: '',
     remember: true,
   };
 
@@ -64,6 +64,17 @@ export default function LoginForm() {
     }
   };
 
+  const fillAdminCred = async () => {
+    // set value to text field
+    methods.setValue('email', 'admin@root.com');
+    methods.setValue('password', '123Pa$$word!');
+  };
+
+  const fillUserCred = async () => {
+    // set value to text field
+    methods.setValue('email', 'user@root.com');
+    methods.setValue('password', '123Pa$$word!');
+  };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
@@ -97,6 +108,16 @@ export default function LoginForm() {
       <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
         Login
       </LoadingButton>
+
+      <Stack direction="row" spacing={1.5}  sx={{ my: 2 }}>
+          <Button fullWidth variant="contained" color="warning" onClick={fillAdminCred}>
+            Fill Admin credentials
+          </Button>
+
+          <Button fullWidth variant="contained"  color="info"  onClick={fillUserCred}>
+            Fill User credentials
+          </Button>
+        </Stack>
     </FormProvider>
   );
 }

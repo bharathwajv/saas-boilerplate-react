@@ -2,15 +2,13 @@ import { m } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Button, Box, Container, Typography, Stack } from '@mui/material';
+import { Button, Box, Container, Typography, Stack, TextField } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // components
 import Iconify from '../../components/Iconify';
 import { MotionContainer, varFade } from '../../components/animate';
-
 // ----------------------------------------------------------------------
-
 const RootStyle = styled(m.div)(({ theme }) => ({
   position: 'relative',
   backgroundColor: theme.palette.grey[400],
@@ -89,12 +87,17 @@ export default function HomeHero() {
             </m.div>
 
             <m.div variants={varFade().inRight}>
-              <Typography sx={{ color: 'common.white' }}>
-               Developed with faster and fluent MUI components
-              </Typography>
+              <Typography sx={{ color: 'common.white' }}>Developed with faster and fluent MUI components, enter your company name to get things started (Demo always uses root)</Typography>
             </m.div>
 
-
+            <m.div variants={varFade().inRight}>
+              <Stack direction="row" flexWrap="wrap" alignItems="center" spacing={1.5}>
+                <Typography variant="h6" sx={{ color: 'text.disabled', mb: 3 }}>
+                  Company Name:
+                </Typography>
+                <TextField label="tenant" focused defaultValue="Root" sx={{ input: { color: 'white' } }} />
+              </Stack>
+            </m.div>
             <m.div variants={varFade().inRight}>
               <Button
                 size="large"
@@ -106,7 +109,6 @@ export default function HomeHero() {
                 Live Preview
               </Button>
             </m.div>
-
           </ContentStyle>
         </Container>
       </RootStyle>

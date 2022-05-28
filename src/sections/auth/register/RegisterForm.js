@@ -1,6 +1,7 @@
 /* eslint-disable no-debugger */
 import * as Yup from 'yup';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // form
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -13,12 +14,13 @@ import useIsMountedRef from '../../../hooks/useIsMountedRef';
 // components
 import Iconify from '../../../components/Iconify';
 import { FormProvider, RHFTextField } from '../../../components/hook-form';
-
+// routes
+import { PATH_DASHBOARD } from '../../../routes/paths';
 // ----------------------------------------------------------------------
 
 export default function RegisterForm() {
   const { register } = useAuth();
-
+  const navigate = useNavigate();
   const isMountedRef = useIsMountedRef();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -51,6 +53,7 @@ export default function RegisterForm() {
     debugger
     try {
       await register(data.email, data.password, data.userName);
+      navigate(PATH_DASHBOARD.root, { replace: true });
     } catch (error) {
       console.error(error);
       reset();
