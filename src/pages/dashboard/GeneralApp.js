@@ -3,7 +3,7 @@
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Stack, Button } from '@mui/material';
 // hooks
-import { CashierClient } from '../../utils/NGClient.ts';
+// import { CashierClient } from '../../utils/NGClient.ts';
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
 // _mock_
@@ -38,8 +38,8 @@ export default function GeneralApp() {
   // function to call ngswag client async // todo - testing
   const callNgswag =  async () => {
     debugger;
-    const cc = new CashierClient();
-    const tst = await cc.getList();
+    // const cc = new CashierClient();
+    // const tst = await cc.getList();
   };
   
   return (

@@ -124,7 +124,7 @@ function AuthProvider({ children }) {
   };
 
   const register = async (email, password, userName) => {
-    const response = await axios.post('/users/self-register', {
+    await axios.post('/users/self-register', {
       email,
       password,
       confirmPassword: password,

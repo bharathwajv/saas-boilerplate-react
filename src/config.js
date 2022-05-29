@@ -6,6 +6,7 @@ import { PATH_DASHBOARD } from './routes/paths';
 // API
 // ----------------------------------------------------------------------
 
+export const BASE_API = "https://localhost:5001/" || '';
 export const HOST_API = "https://localhost:5001/api" || '';
 
 export const FIREBASE_API = {

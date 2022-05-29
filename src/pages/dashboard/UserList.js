@@ -1,5 +1,6 @@
+/* eslint-disable no-debugger */
 import { paramCase } from 'change-case';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // @mui
 import {
@@ -35,7 +36,8 @@ import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import { TableEmptyRows, TableHeadCustom, TableNoData, TableSelectedActions } from '../../components/table';
 // sections
 import { UserTableToolbar, UserTableRow } from '../../sections/@dashboard/user/list';
-
+// utils
+import axios from '../../utils/axios';
 // ----------------------------------------------------------------------
 
 const STATUS_OPTIONS = ['all', 'active', 'banned'];
@@ -54,12 +56,13 @@ const ROLE_OPTIONS = [
 ];
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', align: 'left' },
-  { id: 'company', label: 'Company', align: 'left' },
-  { id: 'role', label: 'Role', align: 'left' },
-  { id: 'isVerified', label: 'Verified', align: 'center' },
-  { id: 'status', label: 'Status', align: 'left' },
-  { id: '' },
+  { id: 'userName', label: 'User Name', align: 'left' },
+  { id: 'email', label: 'Email Id', align: 'left' },
+  { id: 'phoneNumber', label: 'Phone Number', align: 'left' },
+  { id: 'roles', label: 'Roles', align: 'left' },
+  { id: 'emailConfirmed', label: 'Email Confirmed', align: 'center' },
+  { id: 'isActive', label: 'is Active', align: 'left' },
+  { id: '' }, // for actions like delete edit assign roles
 ];
 
 // ----------------------------------------------------------------------
@@ -88,13 +91,23 @@ export default function UserList() {
 
   const navigate = useNavigate();
 
-  const [tableData, setTableData] = useState(_userList);
+  const [tableData, setTableData] = useState([]);
 
-  const [filterName, setFilterName] = useState('');
+  const [filterName, setFilterName] = useState();
 
   const [filterRole, setFilterRole] = useState('all');
 
   const { currentTab: filterStatus, onChangeTab: onChangeFilterStatus } = useTabs('all');
+
+  useEffect(() => {
+    const getData = async () => {
+      debugger;
+      const response = await axios.get('/users');
+      setTableData(response.data);
+      debugger;
+    };
+    getData();
+  }, []);
 
   const handleFilterName = (filterName) => {
     setFilterName(filterName);
@@ -112,6 +125,7 @@ export default function UserList() {
   };
 
   const handleDeleteRows = (selected) => {
+    debugger;
     const deleteRows = tableData.filter((row) => !selected.includes(row.id));
     setSelected([]);
     setTableData(deleteRows);
@@ -132,9 +146,9 @@ export default function UserList() {
   const denseHeight = dense ? 52 : 72;
 
   const isNotFound =
-    (!dataFiltered.length && !!filterName) ||
-    (!dataFiltered.length && !!filterRole) ||
-    (!dataFiltered.length && !!filterStatus);
+    (!dataFiltered?.length && !!filterName) ||
+    (!dataFiltered?.length && !!filterRole) ||
+    (!dataFiltered?.length && !!filterStatus);
 
   return (
     <Page title="User: List">
@@ -229,7 +243,7 @@ export default function UserList() {
                       selected={selected.includes(row.id)}
                       onSelectRow={() => onSelectRow(row.id)}
                       onDeleteRow={() => handleDeleteRow(row.id)}
-                      onEditRow={() => handleEditRow(row.name)}
+                      onEditRow={() => handleEditRow(row.userName)}
                     />
                   ))}
 
@@ -267,6 +281,7 @@ export default function UserList() {
 // ----------------------------------------------------------------------
 
 function applySortFilter({ tableData, comparator, filterName, filterStatus, filterRole }) {
+  debugger;
   const stabilizedThis = tableData.map((el, index) => [el, index]);
 
   stabilizedThis.sort((a, b) => {
@@ -278,15 +293,15 @@ function applySortFilter({ tableData, comparator, filterName, filterStatus, filt
   tableData = stabilizedThis.map((el) => el[0]);
 
   if (filterName) {
-    tableData = tableData.filter((item) => item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
+    tableData = tableData.filter((item) => item.userName.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
   }
 
   if (filterStatus !== 'all') {
-    tableData = tableData.filter((item) => item.status === filterStatus);
+    tableData = tableData.filter((item) => item.isActive === filterStatus);
   }
 
   if (filterRole !== 'all') {
-    tableData = tableData.filter((item) => item.role === filterRole);
+    tableData = tableData.filter((item) => item.roles === filterRole);
   }
 
   return tableData;
