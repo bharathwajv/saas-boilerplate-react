@@ -6,8 +6,8 @@
   "private": true,
   "homepage": "https://bharathwajv.github.io",
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "node --max_old_space_size=2560 node_modules/.bin/react-scripts start",
+    "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx ./src",
     "lint:fix": "eslint --fix --ext .js,.jsx ./src",
@@ -74,6 +74,7 @@
     "firebase": "^9.6.10",
     "framer-motion": "^6.2.9",
     "gh-pages": "^4.0.0",
+    "heroku": "^7.60.2",
     "highlight.js": "^11.5.0",
     "history": "^5.3.0",
     "i18next": "^21.6.15",
