@@ -55,11 +55,9 @@ export default function LoginForm() {
       await login(data.email, data.password);
     } catch (error) {
       console.error(error);
-
       reset();
-
       if (isMountedRef.current) {
-        setError('afterSubmit', { ...error, message: error.messages[0] });
+        setError('afterSubmit', { ...error, message: (typeof error === 'string') ? error :error.messages[0] });
       }
     }
   };
