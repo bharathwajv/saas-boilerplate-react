@@ -1,4 +1,4 @@
-Create a boiler plate app which can be used by any application
+Create a boilerplate app which can be used by any application
 
 Action plan :
 
@@ -8,7 +8,7 @@ Action plan :
 
 3, user list update - in progress (update roles column, avatar for user)
 
-4, tenant page prompt ofr contact info if new tenant  - yet to start
+4, tenant page prompt for getting contact info if new tenant  - yet to start
 
 5, create new user, update user, delete user - yet to start
 
@@ -19,3 +19,8 @@ Action plan :
 8, Roles and permisions for users selection  - yet to start
 
 9, Show pages based on permisions - rolegaurd  - yet to start
+
+
+Advanced features : - yet to start
+
+10, Dashboard realtime update using signaltr or websocket
