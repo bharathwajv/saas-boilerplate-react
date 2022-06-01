@@ -1,38 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Create a boilerplate app which can be used by any application
 
-## 1.Install
+Action plan :
 
-### npm
+1, login flow - done
 
-```
-npm i
-or
-npm i --legacy-peer-deps
-```
+2, register flow - done
 
-### yarn
+3, user list update - in progress (update roles column, avatar for user)
 
-```
-yarn install
-```
+4, tenant page prompt for getting contact info if new tenant  - yet to start
 
-## 2.Start
+5, create new user, update user, delete user - yet to start
 
-```sh
-npm start
-or
-yarn start
-```
+6, bulk delete - FSH change as well as stored proc - yet to start
+ 
+7, Tenant add delete update subscription - yet to start
 
-## 3.Build
+8, Roles and permisions for users selection  - yet to start
 
-```sh
-npm run build or yarn build
-```
+9, Show pages based on permisions - rolegaurd  - yet to start
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
+Advanced features : - yet to start
 
-Your app is ready to be deployed.
+10, Dashboard realtime update using signaltr or websocket
