@@ -28,6 +28,8 @@ LoadingScreen.propTypes = {
   isDashboard: PropTypes.bool,
 };
 
+// NewLearnings  - full screan loader
+
 export default function LoadingScreen({ isDashboard, ...other }) {
   return (
     <>

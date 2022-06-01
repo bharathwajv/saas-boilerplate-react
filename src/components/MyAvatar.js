@@ -14,7 +14,7 @@ export default function MyAvatar({ ...other }) {
 //  const BASE_API = "https://localhost:5001/" || '';
   return (
     <Avatar
-      src= {BASE_API + user?.imageUrl}
+      src= {BASE_API + user?.imageUrl} // ToDoLater enhance
       alt={user?.userName}
       color={user?.imageUrl ? 'default' : createAvatar(user?.userName).color}
       {...other}

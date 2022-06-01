@@ -49,7 +49,7 @@ export default function UserTableRow({ row, selected, onEditRow, onSelectRow, on
       <TableCell align="left">{email}</TableCell>
 
       <TableCell align="left" sx={{ textTransform: 'capitalize' }}>
-        {phoneNumber}
+        {phoneNumber ?? 'Not provided'}
       </TableCell>
       <TableCell align="left">{roles}</TableCell>
       <TableCell align="center">
