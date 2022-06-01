@@ -33,6 +33,7 @@ import Page from '../../components/Page';
 import Iconify from '../../components/Iconify';
 import Scrollbar from '../../components/Scrollbar';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import LinearProgress from '../../components/LoadingScreen';
 import { TableEmptyRows, TableHeadCustom, TableNoData, TableSelectedActions } from '../../components/table';
 // sections
 import { UserTableToolbar, UserTableRow } from '../../sections/@dashboard/user/list';
@@ -99,14 +100,15 @@ export default function UserList() {
 
   const { currentTab: filterStatus, onChangeTab: onChangeFilterStatus } = useTabs('all');
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getSetData = async () => {
+    const response = await axios.get('/users');
+    setTableData(response.data);
+  };
+
   useEffect(() => {
-    const getData = async () => {
-      debugger;
-      const response = await axios.get('/users');
-      setTableData(response.data);
-      debugger;
-    };
-    getData();
+    getSetData();
   }, []);
 
   const handleFilterName = (filterName) => {
@@ -118,10 +120,17 @@ export default function UserList() {
     setFilterRole(event.target.value);
   };
 
-  const handleDeleteRow = (id) => {
-    const deleteRow = tableData.filter((row) => row.id !== id);
-    setSelected([]);
-    setTableData(deleteRow);
+  const handleDeleteRow = async (user) => {
+    debugger
+    // string interploate id
+    const response = await axios.post(`/users/${user.id}/toggle-status`,{
+        ActivateUser: !user.isActive,
+        UserId : user.id,
+    });
+    getSetData();
+    // const deleteRow = tableData.filter((row) => row.id !== id);
+    // setSelected([]);
+    // setTableData(deleteRow);
   };
 
   const handleDeleteRows = (selected) => {
@@ -151,6 +160,10 @@ export default function UserList() {
     (!dataFiltered?.length && !!filterStatus);
 
   return (
+    !isLoading && 
+     // loading on top of table
+    <LinearProgress />
+   || (
     <Page title="User: List">
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
@@ -242,7 +255,7 @@ export default function UserList() {
                       row={row}
                       selected={selected.includes(row.id)}
                       onSelectRow={() => onSelectRow(row.id)}
-                      onDeleteRow={() => handleDeleteRow(row.id)}
+                      onDeleteRow={() => handleDeleteRow(row)}
                       onEditRow={() => handleEditRow(row.userName)}
                     />
                   ))}
@@ -275,13 +288,12 @@ export default function UserList() {
         </Card>
       </Container>
     </Page>
-  );
+  ));
 }
 
 // ----------------------------------------------------------------------
 
 function applySortFilter({ tableData, comparator, filterName, filterStatus, filterRole }) {
-  debugger;
   const stabilizedThis = tableData.map((el, index) => [el, index]);
 
   stabilizedThis.sort((a, b) => {
