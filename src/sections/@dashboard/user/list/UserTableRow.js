@@ -86,10 +86,10 @@ export default function UserTableRow({ row, selected, onEditRow, onSelectRow, on
                   onDeleteRow();
                   handleCloseMenu();
                 }}
-                sx={{ color: 'error.main' }}
+                sx={{ color: isActive? 'info.darker' :'success.darker'}}
               >
-                <Iconify icon={'eva:trash-2-outline'} />
-                Delete
+                <Iconify icon={isActive? 'eva:close-circle-outline' :'eva:flash-outline'} />
+                {!isActive? "Activate" : "Ban user"}
               </MenuItem>
               <MenuItem
                 onClick={() => {

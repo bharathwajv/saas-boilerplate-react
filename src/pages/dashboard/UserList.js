@@ -160,7 +160,7 @@ export default function UserList() {
     (!dataFiltered?.length && !!filterStatus);
 
   return (
-    !isLoading && 
+    isLoading && 
      // loading on top of table
     <LinearProgress />
    || (
