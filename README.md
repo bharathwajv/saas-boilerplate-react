@@ -6,9 +6,9 @@ Action plan :
 
 2, register flow - done
 
-3, user list update - in progress (update roles column, avatar for user)
+3, tenant page prompt for getting contact info if new tenant  - yet to start
 
-4, tenant page prompt for getting contact info if new tenant  - yet to start
+4, user list update - in progress (update roles column, avatar for user)
 
 5, create new user, update user, delete user - yet to start
 
