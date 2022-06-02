@@ -20,6 +20,7 @@ Action plan :
 
 9, Show pages based on permisions - rolegaurd  - yet to start
 
+-- Dashboard Signalr live update
 
 Advanced features : - yet to start
 
