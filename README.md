@@ -6,6 +6,8 @@ Action plan :
 
 2, register flow - done
 
+-- Loader on api call
+
 3, tenant page prompt for getting contact info if new tenant  - yet to start
 
 4, user list update - in progress (update roles column, avatar for user)
